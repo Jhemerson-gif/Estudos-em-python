@@ -1,33 +1,24 @@
-documentos = {'nome':'',
-              'idade':0,
-              'ctps'
-              'cpf':'',
-              'salario':0,
-              'anodecontratação':0,
-}
-
+from datetime import datetime
 listadedocumentos=[]
-aposentar = 35
-while True:
+
+while True: #Cadastramento de dados
+    documentos={}
     documentos['nome']= input('Digite o seu nome: ').title()
-    documentos['idade']= int(input('Digite o seu ano de nascimento: '))
+    nasc = int(input('Digite o ano de nascimento: '))
+    documentos['idade']= datetime.now().year - nasc
+
     documentos['ctps']= int(input('Carteira de trabalho (Se não tem experiência digite: 0): '))
     listadedocumentos.append(documentos['idade'])
-    idade = 2026
 
-    if documentos['ctps'] != -1:
-        idade -= listadedocumentos [0]
 
-    if documentos['ctps'] == 0:
-        break
-    else:
+    if documentos['ctps'] != 0:
         documentos['cpf']= int(input('Digite o seu CPF: '))
         documentos['salario']= int(input('Digite o seu salário mensal: '))
         documentos['anodecontratação']= int(input('Digite o ano da sua contratação: '))
+        documentos['aposentadoria'] = documentos["idade"]+((documentos['anodecontratação']+35) - datetime.now().year)
 
         listadedocumentos.append(documentos['anodecontratação'])
 
-    aposentarar = 2026 - listadedocumentos[1]
 
     continuar = str(input('Deseja continuar? [S/N]')).strip().upper()[0]
 
@@ -37,10 +28,5 @@ while True:
 
 print('-='*40)
 print(documentos)
-print(f'O nome tem o valor {documentos["nome"]}')
-print(f'A idade tem o valor {idade}')
-if documentos['ctps'] != 0:
-    print(f'O CPF tem o valor {documentos["cpf"]}')
-    print(f'O salario tem o valor {documentos["salario"]}')
-    print(f'A aposentadoria tem o valor {aposentarar}')
-
+for k, v in documentos.items():
+    print(f'{k} tem o valor {v}')

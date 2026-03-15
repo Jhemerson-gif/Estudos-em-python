@@ -3,6 +3,7 @@ from time import sleep
 from operator import itemgetter
 
 maior = cont= 0
+#Sroteio  dos numeros do dado
 sorteio = {'Jhemerson':randint(1,6),
            'Jonas':randint(1,6),
            'Felipe':randint(1,6),
@@ -27,6 +28,8 @@ sleep(0.5)
 print('-='*30)
 
 print(f'Ranking dos jogadores:')
+
+#Listando os nomes e o numero tirado já definido no dicionario
 for k, v in sorteio.items():
     print(f'O {k} tirou o numero {v}')
     sleep(0.3)
@@ -37,8 +40,8 @@ print('OS VENCES DE DADOS'.center(60))
 print('-='*30)
 sleep(0.5)
 
+#Rankeando os maiores numeros em ordem
 ranking = sorted(sorteio.items(), key=itemgetter(1), reverse=True)
-
 
 for i, v in enumerate(ranking):
     print(f'{i+1}• lugar: {v[0]} com {v[1]}')

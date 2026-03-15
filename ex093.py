@@ -1,36 +1,37 @@
 totalgols={
     'partidas':0,
-    'gols':0,
     'total':0
 }
 gols=[]
 contador=[]
 todosgols=[]
-cont=0
 
 nome= str(input('Digite o nome do jogador: '))
 totalgols['partidas'] = int(input(f'Ola {nome}, Quantas partidas você jogou ?'))
-for c in range (totalgols['partidas']):
-    cont+=1
-    contador.append(cont)
-    totalgols['gols'] = int(input(f'Quantos gols você fez na {cont} partida? '))
-    gols.append(totalgols['gols'])
-    totalgols['total'] += totalgols['gols']
-    todosgols.append(totalgols['gols'])
+for c in range (0,totalgols['partidas']):
+    gols.append(int(input(f'Quantos gols você fez na {c+1} partida? ')))
+    (totalgols['gols']) = gols[:]
+    totalgols['total'] = sum(gols)
 
-    todosgols.pop(0)
+
+
+
 totalgols['media']= totalgols['total'] / totalgols['partidas']
 print('-='*30)
 print(totalgols)
 print('-='*30)
-print(f'O jogador {nome} jogou {totalgols['partidas']} partidas.')
-print(f'Na {totalgols['partidas']} jogadas ele fez {totalgols["total"]} gols')
-for b in range(totalgols['partidas']):
-    print(f'Nas {contador[0]} marcou {gols[0]} gols')
-    contador[0] += 1
-    gols.pop(0)
+for k,v in totalgols.items():
+    print(f' O campo {k} tem o valor {v}')
 
 
+print('-='*30)
+print(f'O jogador {nome} jogou {len(totalgols['gols'])} partidas')
+for k,v in enumerate(totalgols['gols']):
+    print(f'   => Na {k+1} marcou {v} gols')
+
+
+print('-='*30)
+print(f'Foi um total de {totalgols["total"]} gols')
 print(f'A sua média de gols por partida é de {totalgols["media"]} gols')
 
 print('-='*30)
